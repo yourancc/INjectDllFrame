@@ -41,7 +41,11 @@ namespace InjectTools
         {
             text_dllpath.Text = Dialog_DllPath.FileName;
         }
-
+        /// <summary>
+        /// 使用远程线程的方式注入模块
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             //int hwnd = (int)plug.FindWindow("测试", "测试窗口");

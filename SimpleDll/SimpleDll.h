@@ -23,5 +23,3 @@ C_DLL_API VOID SetHookOff();
 
 VOID check(HMODULE hmodule);
 SIMPLEDLL_API int nSimpleDll;
-
-SIMPLEDLL_API int fnSimpleDll(void);

@@ -9,9 +9,8 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	switch (ul_reason_for_call)
 	{
 	case DLL_PROCESS_ATTACH:
-		check(hModule);
+		check(hModule);//当注入时判断是否为目标进程，是的话弹出对话框
 	case DLL_THREAD_ATTACH:
-		check(hModule);
 	case DLL_THREAD_DETACH:
 	case DLL_PROCESS_DETACH:
 		break;
