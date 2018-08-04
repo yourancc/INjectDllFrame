@@ -5,18 +5,23 @@
 // SIMPLEDLL_API 函数视为是从 DLL 导入的，而此 DLL 则将用此宏定义的
 // 符号视为是被导出的。
 #ifdef SIMPLEDLL_EXPORTS
-#define SIMPLEDLL_API __declspec(dllexport)
+#define SIMPLEDLL_API extern "C"  __declspec(dllexport)
+#define C_DLL_API extern "C" __declspec(dllexport)
 #else
-#define SIMPLEDLL_API __declspec(dllimport)
+#define SIMPLEDLL_API extern "C"  __declspec(dllimport)
+#define C_DLL_API extern "C" __declspec(dllexport)
 #endif
 
-// 此类是从 SimpleDll.dll 导出的
-class SIMPLEDLL_API CSimpleDll {
-public:
-	CSimpleDll(void);
-	// TODO:  在此添加您的方法。
-};
+SIMPLEDLL_API  HHOOK g_Hook;
+C_DLL_API HMODULE hModul;
+LRESULT CALLBACK GetMessageHookProcW(int nCode, WPARAM wParam, LPARAM lParam);
+C_DLL_API INT showMessage(WCHAR * text);
+C_DLL_API int showMessage2();
+C_DLL_API VOID SetHookOn(DWORD threadId);
+C_DLL_API VOID SetHookAllOn();
+C_DLL_API VOID SetHookOff();
 
-extern SIMPLEDLL_API int nSimpleDll;
+VOID check(HMODULE hmodule);
+SIMPLEDLL_API int nSimpleDll;
 
 SIMPLEDLL_API int fnSimpleDll(void);
